@@ -115,7 +115,7 @@ impl Painter {
                         let data: &[u8] = bytemuck::cast_slice(image.pixels.as_ref());
                         ctx.texture_update_part(*texture, x as _, y as _, w as _, h as _, data);
                     }
-                    egui::ImageData::Font(image) => {
+/*                     egui::ImageData::Font(image) => {
                         assert_eq!(
                             image.width() * image.height(),
                             image.pixels.len(),
@@ -128,7 +128,7 @@ impl Painter {
                             .collect();
 
                         ctx.texture_update_part(*texture, x as _, y as _, w as _, h as _, &data);
-                    }
+                    } */
                 }
             } else {
                 eprintln!("Failed to find egui texture {tex_id:?}");
@@ -155,7 +155,7 @@ impl Painter {
                     let data: &[u8] = bytemuck::cast_slice(image.pixels.as_ref());
                     ctx.new_texture_from_data_and_format(data, params)
                 }
-                egui::ImageData::Font(image) => {
+/*                 egui::ImageData::Font(image) => {
                     assert_eq!(
                         image.width() * image.height(),
                         image.pixels.len(),
@@ -168,7 +168,7 @@ impl Painter {
                         .collect();
 
                     ctx.new_texture_from_data_and_format(&data, params)
-                }
+                } */
             };
 
             let previous = self.textures.insert(tex_id, texture);
